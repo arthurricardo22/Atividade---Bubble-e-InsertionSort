@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char nomes[5][20] = {"Arthur", "Bruna", "Carlos", "Daniela", "Beatriz"};
+    int n = 5;
+
+    for (int i = 1; i < n; i++) {
+        char chave[20];
+        strcpy(chave, nomes[i]);
+        int j = i - 1;
+
+        // Move os elementos maiores que chave para a direita
+        while (j >= 0 && strcmp(nomes[j], chave) > 0) {
+            strcpy(nomes[j + 1], nomes[j]);
+            j--;
+        }
+        strcpy(nomes[j + 1], chave);
+    }
+
+    printf("InsertionSort Crescente:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%s\n", nomes[i]);
+    }
+
+    return 0;
+}
